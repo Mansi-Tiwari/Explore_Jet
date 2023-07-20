@@ -1,0 +1,71 @@
+.contact {
+  .card {
+    padding: 3rem;
+    border: 1px solid #f8f5f5;
+  }
+
+  .card2 {
+    padding: 2rem;
+    background-color: var(--dark-blue);
+    color: #fff;
+    h3,
+    p {
+      color: #fff;
+    }
+    .icons {
+      margin: 3rem 0;
+      span {
+        display: flex;
+
+        align-items: center;
+        margin-bottom: 1rem;
+        a,
+        p {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+
+  .section {
+    display: flex;
+
+    form {
+      width: 500px;
+      max-width: 100%;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+      label {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 500;
+      }
+      input[type="text"],
+      input[type="number"],
+      input[type="file"],
+      input[type="email"],
+      select,
+      textarea,
+      input[type="password"] {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 300;
+        padding: 1rem;
+        margin: 1rem auto;
+        width: 100%;
+        border: 1px solid #b2c9f3;
+        border-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        outline: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .contact {
+    .section {
+      flex-direction: column;
+    }
+  }
+}

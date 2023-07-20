@@ -1,0 +1,78 @@
+.auth {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  .img {
+    animation: slide-down 0.5s ease;
+  }
+
+  .form {
+    width: 39rem;
+    padding: 5.5rem;
+    animation: slide-up 0.5s ease;
+    border-radius: 16px;
+    h2 {
+     margin-bottom: 9px;
+      color: var(--color-orange);
+      text-align: center;
+    }
+    form {
+      border-radius: 16px;
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 300;
+        padding: 1rem;
+        margin: 1rem auto;
+        width: 100%;
+        border: 1px solid #4ea8cc;
+        border-radius: 6px;
+        outline: none;
+      }
+      .links {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0;
+      }
+
+      p {
+        text-align: center;
+        margin: 1rem;
+      }
+    }
+    .register {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+ 
+    }
+  }
+
+  @keyframes slide-up {
+    0% {
+      transform: translateY(-5rem);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slide-down {
+    0% {
+      transform: translateY(5rem);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media screen and (max-width: 790px) {
+  .img {
+    display: none;
+  }
+}
