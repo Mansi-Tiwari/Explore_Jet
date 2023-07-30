@@ -16,7 +16,7 @@ const CheckoutSummary = () => {
 
   return (
     <div>
-      <h3>Checkout Summary</h3>
+      <h3 className="text-2xl font-semibold md:text-3xl">Checkout Summary</h3>
       <div>
         {cartItems.lenght === 0 ? (
           <>
@@ -30,15 +30,15 @@ const CheckoutSummary = () => {
             <p>
               <b>{`Cart item(s): ${cartTotalQuantity}`}</b>
             </p>
-            <div className={styles.text}>
-              <h4>Subtotal:</h4>
-              <h3>{cartTotalAmount.toFixed(2)}</h3>
+            <div className={`text-2xl ${styles.text}`}>
+              <h1 >Subtotal:</h1>
+              <h3 >₹{cartTotalAmount.toFixed(2)}</h3>
             </div>
             {cartItems.map((item, index) => {
               const { id, name, price, cartQuantity } = item;
               return (
                 <Card key={id} cardClass={styles.card}>
-                  <h4>Product: {name}</h4>
+                  <h4 className="text-2xl font-bold">Product: {name}</h4>
                   <p>Quantity: {cartQuantity}</p>
                   <p>Unit price: {price}</p>
                   <p>Set price: {price * cartQuantity}</p>

@@ -26,11 +26,13 @@ const OrderHistory = () => {
   const filteredOrders = orders.filter((order) => order.userID === userID);
 
   return (
-    <section className="w-[500px]">
-      <div className={`container  w-[500px] ${styles.order}`}>
-        <h2>Your Order History</h2>
-        <p>
-          Open an order to leave a <b>Product Review</b>
+    <section>
+      <div className={`container h-screen ${styles.order}`}>
+        <h2 className="md:text-4xl mb-20 text-2xl font-bold ">
+          Your Order History
+        </h2>
+        <p >
+          Open an order to leave a <strong>Product Review</strong>
         </p>
         <br />
         <>
@@ -42,7 +44,7 @@ const OrderHistory = () => {
               <table>
                 <thead>
                   <tr>
-                    <th>s/n</th>
+                    <th>S/N</th>
                     <th>Date</th>
                     <th>Order ID</th>
                     <th>Order Amount</th>
@@ -66,7 +68,7 @@ const OrderHistory = () => {
                         </td>
                         <td>{id}</td>
                         <td>
-                          {"$"}
+                          {"₹"}
                           {orderAmount}
                         </td>
                         <td>

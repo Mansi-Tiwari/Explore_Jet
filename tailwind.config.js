@@ -4,14 +4,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'dark': '#04020E',
-        'violet-normal': '#0F0A3C',
-        'violet-dark-hover': "#090624",
-        'violet-dark-active': "#07051b",
-        'violet-darker': "#050415",
-        'violet-light': "#100E2B",
+
         "green-normal": "#009F9D",
-        'pink-normal': "#B9198E", 
+        'pink-normal': "#B9198E",
         'oxford-blue': "#0C0A24",
       },
       fontFamily: {
@@ -32,6 +27,9 @@ export default {
         'register-image': 'url("./assets/register.png")',
         'login-image': 'url("./assets/login.png")',
         'loader-image': 'url("./assets/loader.gif")',
+      'empty':'url("./assets/emptyCart.png")',
+      
+
       },
       boxShadow: {
         'nav': '0px 4px 4px rgba(0, 0, 0, 0.25)',

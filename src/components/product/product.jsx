@@ -10,7 +10,7 @@ import styles from "./Product.module.scss";
 import ProductFilter from "./productFilter/ProductFilter";
 import ProductList from "./productList/ProductList";
 import spinnerImg from "../../assets/spinner.jpg";
-import {BsFilterCircleFill } from "react-icons/bs";
+import { TiFilter } from "react-icons/ti";
 
 const Product = () => {
   const { data, isLoading } = useFetchCollection("products");
@@ -44,8 +44,15 @@ const Product = () => {
             showFilter ? `${styles.filter} ${styles.show}` : `${styles.filter}`
           }
         >
-          {isLoading ? null : <ProductFilter />}
+          {isLoading ? null : <ProductFilter/>}
         </aside>
+      <div className={`hover:bg-gray-100 ${styles.icon} `} onClick={toggleFilter}>
+          <TiFilter size={35} color="#0a1930" />
+          <p>
+            <strong>{showFilter ? "Hide Filter" : "Show Filter"}</strong>
+          </p>
+        </div>
+
         <div className={styles.content}>
           {isLoading ? (
             <img
@@ -57,13 +64,8 @@ const Product = () => {
           ) : (
             <ProductList products={products} />
           )}
-          <div className={`  ${styles.icon} `}onClick={toggleFilter}>
-            <BsFilterCircleFill size={25} color="#1daa97" />
-            <p className="text-bold">
-              <strong>{showFilter ? "Hide Filter" : "Show Filter"}</strong>
-            </p>
-          </div>
         </div>
+
       </div>
     </section>
   );

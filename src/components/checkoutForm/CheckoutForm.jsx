@@ -6,7 +6,7 @@ import {
 } from "@stripe/react-stripe-js";
 import styles from "./CheckoutForm.module.scss";
 import Card from "../card/Card";
-import CheckoutSummary from "../checkoutSummary/CheckoutSummary";
+import CheckoutSummary from "../checkoutSummery/CheckoutSummery";
 import spinnerImg from "../../assets/spinner.jpg";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -117,7 +117,7 @@ const CheckoutForm = () => {
   return (
     <section>
       <div className={`container ${styles.checkout}`}>
-        <h2>Checkout</h2>
+        <h2 className="text-3xl mb-10 font-bold">Checkout</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <Card cardClass={styles.card}>
@@ -126,7 +126,7 @@ const CheckoutForm = () => {
           </div>
           <div>
             <Card cardClass={`${styles.card} ${styles.pay}`}>
-              <h3>Stripe Checkout</h3>
+              <h3 className="text-4xl mb-5 font-semibold">Stripe Checkout</h3>
               <PaymentElement id={styles["payment-element"]} />
               <button
                 disabled={isLoading || !stripe || !elements}

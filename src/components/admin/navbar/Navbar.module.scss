@@ -1,4 +1,6 @@
 .navbar {
+  border-top: 1px solid #302f2f;
+
   border-right: 1px solid #ccc;
   min-height: 80vh;
 
@@ -8,7 +10,7 @@
     align-items: center;
     flex-direction: column;
     padding: 4rem;
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
 
     h4 {
       color: #fff;

@@ -42,7 +42,7 @@
   align-items: center;
   flex-direction: column;
   transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.281);
+  background: rgba(248, 246, 246, 0.281);
   animation: slide-up 1s ease 0.5s;
   animation-fill-mode: forwards;
   //   visibility: hidden;
@@ -98,7 +98,7 @@
   opacity: 1;
 }
 .arrow {
-  border: 2px solid rgb(39, 27, 23);
+  border: 1px solid rgb(39, 27, 23);
   border-radius: 50%;
   background: transparent;
   color: #fff;

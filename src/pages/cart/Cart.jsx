@@ -13,11 +13,10 @@ import {
   selectCartTotalQuantity,
 } from "../../redux/slice/cartSlice";
 import styles from "./Cart.module.scss";
-import { FaTrashAlt } from "react-icons/fa";
+import { BiTrashAlt } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/card/Card";
 import { selectIsLoggedIn } from "../../redux/slice/authSlice";
-
 const Cart = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotalAmount = useSelector(selectCartTotalAmount);
@@ -62,27 +61,35 @@ const Cart = () => {
 
   return (
     <section>
-      <div className={`container ${styles.table} h-[600px]`}>
-        <h2 className="font-bold text-3xl mb-10">Shopping Cart</h2>
+      <div
+        className={
+          cartItems.length === 0
+            ? `container object-cover bg-center bg-empty bg-no-repeat ${styles.table} h-[600px]`
+            : `container ${styles.table} h-[600px]`
+        }
+      >
+        <h2 className="font-bold  text-3xl mb-10">Shopping Cart</h2>
         {cartItems.length === 0 ? (
           <>
-            <p>Your cart is currently empty.</p>
+            <p>Your cart is currently empty. </p>
             <br />
-            <div className="border w-[200px] p-4 hover:font-bold">
-              <Link to="/#products">&larr; Continue shopping</Link>
-            </div>
+            <Link to="/#products">
+              <div className="border-2 hover:bg-gray-100 w-[200px] p-4 hover:font-bold">
+                &larr; Continue shopping
+              </div>
+            </Link>
           </>
         ) : (
           <>
             <table>
               <thead>
                 <tr>
-                  <th>s/n</th>
-                  <th>Product</th>
+                  <th>Action</th>
+                  <th>Product </th>
+                  <th>Name</th>
                   <th>Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -90,31 +97,44 @@ const Cart = () => {
                   const { id, name, price, imageURL, cartQuantity } = cart;
                   return (
                     <tr key={id}>
-                      <td>{index + 1}</td>
+                      <td className={styles.icons}>
+                        <BiTrashAlt
+                          size={19}
+                          color="black"
+                          onClick={() => removeFromCart(cart)}
+                        />
+                      </td>
+
                       <td>
-                        <p>
-                          <b>{name}</b>
-                        </p>
                         <img
                           src={imageURL}
                           alt={name}
-                          style={{ width: "100px" }}
+                          className="md:w-[180px]"
                         />
+                      </td>
+                      <td>
+                        {" "}
+                        <p>
+                          <b>{name}</b>
+                        </p>
                       </td>
                       <td>{price}</td>
                       <td>
-                        <div className={styles.count}>
+                        <div
+                          className={` border p-2 gap-2  w-auto flex items-center justify-center flex-col${styles.count}`}
+                        >
+                          Quantity &nbsp;
                           <button
-                            className="--btn"
+                            className="--btn px-4 py-2 border border-gray-300 bg-gray-200"
                             onClick={() => decreaseCart(cart)}
                           >
                             -
                           </button>
-                          <p>
+                          <p className="p-2">
                             <b>{cartQuantity}</b>
                           </p>
                           <button
-                            className="--btn"
+                            className="--btn px-4 py-2 border border-gray-300 bg-gray-200"
                             onClick={() => increaseCart(cart)}
                           >
                             +
@@ -122,45 +142,54 @@ const Cart = () => {
                         </div>
                       </td>
                       <td>{(price * cartQuantity).toFixed(2)}</td>
-                      <td className={styles.icons}>
-                        <FaTrashAlt
-                          size={19}
-                          color="red"
-                          onClick={() => removeFromCart(cart)}
-                        />
-                      </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
+
             <div className={styles.summary}>
-              <button className="--btn --btn-danger" onClick={clearCart}>
-                Clear Cart
+              <button
+                className="--btn bg-black text-white h-20 "
+                onClick={clearCart}
+              >
+                Reset Cart
               </button>
               <div className={styles.checkout}>
-                <div>
-                  <Link to="/#products">&larr; Continue shopping</Link>
+                <div className="border shadow-md p-3 w-80">
+                  <Link to="/#products">&larr; go shopping</Link>
                 </div>
                 <br />
-                <Card cardClass={styles.card}>
-                  <p>
-                    <b> {`Cart item(s): ${cartTotalQuantity}`}</b>
-                  </p>
-                  <div className={styles.text}>
-                    <h4>Subtotal:</h4>
-                    <h3>{`$${cartTotalAmount.toFixed(2)}`}</h3>
-                  </div>
-                  <p>Tax an shipping calculated at checkout</p>
-                  <button
-                    className="--btn --btn-primary --btn-block"
-                    onClick={checkout}
-                  >
-                    Checkout
-                  </button>
-                </Card>
               </div>
             </div>
+            <Card
+              cardClass={`md:w-[50%] p-4 mt-10 float-right  ${styles.card}`}
+            >
+              <p>
+                <strong> {`Cart item(s): ${cartTotalQuantity}`}</strong>
+              </p>
+              <div className="flex justify-between  ">
+                <h4 className="font-semibold text-3xl ">Subtotal:</h4>
+                <span className="font-semibold text-3xl  ">{`₹${cartTotalAmount.toFixed(
+                  2
+                )}`}</span>
+              </div>
+              <p>Tax an shipping calculated at checkout</p>
+              <br />
+              <div className="border-b"></div>
+              <div className="flex justify-between  mt-2 ">
+                <h4 className="font-semibold text-2xl ">Total:</h4>
+                <span className="font-semibold text-2xl text-teal-500 ">{`₹${cartTotalAmount.toFixed(
+                  2
+                )}`}</span>
+              </div>
+              <button
+                className="--btn --btn-block mt-10 bg-black text-white"
+                onClick={checkout}
+              >
+                Checkout
+              </button>
+            </Card>
           </>
         )}
       </div>

@@ -26,10 +26,8 @@ const ViewProducts = () => {
   const { data, isLoading } = useFetchCollection("products");
   const products = useSelector(selectProducts);
   const filteredProducts = useSelector(selectFilteredProducts);
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage, setProductsPerPage] = useState(10);
-  // Get Current Products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(
@@ -88,10 +86,12 @@ const ViewProducts = () => {
     <>
       {isLoading && <Loader />}
       <div className={styles.table}>
-        <h2>All Products</h2>
+        <h2 className="text-2xl md:text-4xl font-bold mb-20 text-white">
+          All Products
+        </h2>
 
         <div className={styles.search}>
-          <p>
+          <p className="text-white">
             <b>{filteredProducts.length}</b> products found
           </p>
           <Search value={search} onChange={(e) => setSearch(e.target.value)} />
@@ -103,7 +103,7 @@ const ViewProducts = () => {
           <table>
             <thead>
               <tr>
-                <th>s/n</th>
+                <th>S/N</th>
                 <th>Image</th>
                 <th>Name</th>
                 <th>Category</th>
@@ -127,14 +127,13 @@ const ViewProducts = () => {
                     <td>{name}</td>
                     <td>{category}</td>
                     <td>{`$${price}`}</td>
-                    <td className={styles.icons}>
+                    <td className={` flex  items-center gap-2 justify-start ${styles.icons}`}>
                       <Link to={`/admin/add-product/${id}`}>
-                        <FaEdit size={20} color="green" />
+                        <FaEdit size={18} />
                       </Link>
                       &nbsp;
                       <FaTrashAlt
-                        size={18}
-                        color="red"
+                        size={14}
                         onClick={() => confirmDelete(id, imageURL)}
                       />
                     </td>
@@ -144,13 +143,13 @@ const ViewProducts = () => {
             </tbody>
           </table>
         )}
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          productsPerPage={productsPerPage}
-          totalProducts={filteredProducts.length}
-        />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        productsPerPage={productsPerPage}
+        totalProducts={filteredProducts.length}
+      />
     </>
   );
 };

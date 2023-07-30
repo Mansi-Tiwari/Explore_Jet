@@ -3,7 +3,7 @@ import { CountryDropdown } from "react-country-region-selector";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/card/Card";
-import CheckoutSummary from "../../components/checkoutSummary/CheckoutSummary.js";
+import CheckoutSummary from "../../components/checkoutSummery/CheckoutSummery";
 import {
   SAVE_BILLING_ADDRESS,
   SAVE_SHIPPING_ADDRESS,
@@ -219,7 +219,7 @@ const CheckoutDetails = () => {
                 value={billingAddress.phone}
                 onChange={(e) => handleBilling(e)}
               />
-              <button type="submit" className="--btn --btn-primary">
+              <button type="submit" className="--btn bg-black text-white">
                 Proceed To Checkout
               </button>
             </Card>

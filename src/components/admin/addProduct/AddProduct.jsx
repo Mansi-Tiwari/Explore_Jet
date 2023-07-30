@@ -35,8 +35,6 @@ const AddProduct = () => {
   const { id } = useParams();
   const products = useSelector(selectProducts);
   const productEdit = products.find((item) => item.id === id);
-  console.log(productEdit);
-
   const [product, setProduct] = useState(() => {
     const newState = detectForm(id, { ...initialState }, productEdit);
     return newState;
@@ -60,11 +58,8 @@ const AddProduct = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    // console.log(file);
-
-    const storageRef = ref(storage, `eshop/${Date.now()}${file.name}`);
+    const storageRef = ref(storage, `smartbuy/${Date.now()}${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
-
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -144,7 +139,7 @@ const AddProduct = () => {
     <>
       {isLoading && <Loader />}
       <div className={styles.product}>
-        <h2>{detectForm(id, "Add New Product", "Edit Product")}</h2>
+        <h2 className="text-white text-2xl md:text-4xl font-bold mb-20">{detectForm(id, "Add New Product", "Edit Product")}</h2>
         <Card cardClass={styles.card}>
           <form onSubmit={detectForm(id, addProduct, editProduct)}>
             <label>Product name:</label>

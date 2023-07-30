@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.scss";
-import { HiShoppingCart } from "react-icons/hi";
+import { RiShoppingBagLine } from "react-icons/ri";
 import { BiMenuAltRight } from "react-icons/bi";
 import { FaWindowClose, FaUserCircle } from "react-icons/fa";
 import { AdminOnlyLink } from "../adminOnlyRoute/AdminOnlyRoute";
@@ -9,13 +9,18 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import {
   SET_ACTIVE_USER,
   REMOVE_ACTIVE_USER,
 } from "../../redux/slice/authSlice";
 import { GrHpeLabs } from "react-icons/gr";
 import ShowOnLogin, { ShowOnLogout } from "../hiddenLink/HiddeLink";
+import {
+  CALCULATE_TOTAL_QUANTITY,
+  selectCartTotalQuantity,
+} from "../../redux/slice/cartSlice";
+
 const logo = (
   <div className={` flex flex-row pl-6 ${styles.logo}`}>
     <Link to={"/"} className="flex flex-row gap-3">
@@ -31,13 +36,23 @@ const activeTab = ({ isActive }) => (isActive ? `${styles.active}` : "");
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-
+  const [scrollPage, setScrollPage] = useState(false);
   const [displayName, setDisplayName] = useState("");
-
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity);
   const user = auth.currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  useEffect(() => {
+    dispatch(CALCULATE_TOTAL_QUANTITY());
+  }, []);
+  const fixNavbar = () => {
+    if (window.scrollY > 50) {
+      setScrollPage(true);
+    } else {
+      setScrollPage(false);
+    }
+  };
+  window.addEventListener("scroll", fixNavbar);
   //monitor current sign in user
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -84,18 +99,17 @@ const Header = () => {
   };
 
   const cart = (
-    <span className={styles.cart}>
+    <span className={showMenu? 'border-b border-gray-800 flex':`${styles.cart}`}>
       <NavLink to="/cart">
-        Cart
-        <  HiShoppingCart size={20} />
-        <p>5</p>
+        <p className={showMenu?"relative flex items-center justify-center bg-red-600 text-md  rounded-full h-9 w-9 p-1 ml-5":""}>{cartTotalQuantity}</p>
+        <  RiShoppingBagLine size={20} />
       </NavLink>
     </span>
   );
 
 
   return (
-    <header>
+    <header className={scrollPage ? `${styles.fixed}` : null}>
       <div className={`flex flex-row ${styles.header} `}>
         {logo}
         {/* {desktop nav section} */}
@@ -124,9 +138,9 @@ const Header = () => {
               />
             </li>
             <AdminOnlyLink>
-              <li>
+              <li className=" font-bold bg-teal-400 px-2 py-1 rounded-xl hover:bg-transparent hover:border">
                 <Link to="/admin/home">
-                  <button className="--btn --btn-primary">Admin</button>
+                  <button >Admin</button>
                 </Link>
               </li>
             </AdminOnlyLink>
@@ -141,7 +155,7 @@ const Header = () => {
               </NavLink>
             </li>
           </ul>
-          <div className={` ${styles["header-right"]}`} onClick={hideMenu}>
+          <div className={`flex flex-col pl-2 md:items-center md:flex-row md:gap-4 ${styles["header-right"]}`} onClick={hideMenu}>
 
               <ShowOnLogout>
                 <NavLink className={activeTab} to={"/login"}>
@@ -150,11 +164,8 @@ const Header = () => {
               </ShowOnLogout>
               <ShowOnLogin >
                 <a href="#home" className="flex gap-3 items-center text-teal-200" >
-
-
                   <FaUserCircle size={16} />
                   Hi, {displayName}
-
                 </a>
               </ShowOnLogin>
               <ShowOnLogout>
@@ -180,7 +191,7 @@ const Header = () => {
         <div className= {styles["menu-icon"]}>
             {cart}
 
-          <BiMenuAltRight size={40} onClick={toggleMenu} />
+          <BiMenuAltRight size={35} onClick={toggleMenu} />
           </div>
 
       </div>

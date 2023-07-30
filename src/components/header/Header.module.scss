@@ -10,12 +10,14 @@ header {
   width: 100%;
   background-color: var(--dark-blue);
   color: #fff;
+  border-bottom: 1px solid rgb(49, 47, 47);
 
   .header {
     width: 100%;
     height: 8rem;
+    max-width: 1300px;
     margin: 0 auto;
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -27,14 +29,13 @@ header {
     color: #fff;
     cursor: pointer;
     span {
-      color: rgb(41, 218, 188);
+      color: var(--color-teal);
     }
   }
 
   nav {
     width: 75%;
     display: flex;
-    align-items: center;
 
     justify-content: space-between;
     ul {
@@ -51,7 +52,7 @@ header {
         a {
           color: #fff;
           &:hover {
-            color: rgb(41, 218, 188);
+            color: var(--color-teal);
           }
         }
       }
@@ -60,25 +61,31 @@ header {
 
   .header-right {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+
     .cart a {
       display: flex;
       color: #fff;
       position: relative;
       &:hover {
-        color: rgb(41, 218, 188);
+        color: var(--color-teal);
       }
       &.active {
         color: var(--color-danger);
       }
       p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(238, 15, 15);
+        width: 20px;
+        height: 20px;
+        padding: 1px;
+        border-radius: 100%;
         position: absolute;
         top: -1rem;
-        right: -1rem;
+        left: 1.5rem;
         font-weight: 500;
+        color: #fff;
       }
     }
 
@@ -94,33 +101,31 @@ header {
       margin: 0 5px;
       color: #fff;
       &:hover {
-        color: rgb(41, 218, 188);
+        color: var(--color-teal);
       }
       &.active {
-        color: rgb(41, 218, 188);
+        color: white;
       }
     }
   }
 
   .menu-icon {
-    align-items: center;
     cursor: pointer;
     display: none;
   }
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 770px) {
     nav {
       display: block;
       position: absolute;
       top: 0;
-      right: 0;
-
-      width: 80%;
+      left: 0;
+      width: 90%;
       height: 100vh;
       background-color: var(--dark-blue);
-      padding: 5em 3em;
+      padding: 1rem;
       z-index: 999;
-      transform: translateX(200%);
+      transform: translateX(-200%);
       transition: all 0.3s;
 
       .nav-wrapper {
@@ -149,8 +154,7 @@ header {
           }
         }
         li {
-          padding: 12px 20px 12px 20px;
-
+          padding: 20px 0px 20px 0px;
           border-bottom: 1px solid #333;
           a {
             display: block;
@@ -159,75 +163,74 @@ header {
       }
 
       .header-right {
-        display: block;
-        .cart {
-          display: block;
-
-          position: relative;
-
+        a {
+          padding: 20px 0px 20px 0px;
           border-bottom: 1px solid #333;
-          a {
-            position: relative;
-
-            border: none;
-            &:hover {
-              color: #1daa97;
-            }
-            p {
-              position: absolute;
-              top: -1rem;
-              left: 7rem;
-
-              font-weight: 500;
-              color: #fff;
-            }
-          }
         }
 
-        a {
+        .links {
           display: block;
-          margin: 0;
-          padding: 12px 20px 12px 20px;
-          border-bottom: 1px solid #333;
+          a {
+            display: block;
+            margin: 0;
+            padding: 50px 10px;
+            border-bottom: 1px solid #333;
+          }
         }
       }
     }
     .cart {
       display: block;
-      padding: 15px 0px;
+      padding-top: 10px;
+      align-items: center;
+      padding-bottom: 10px;
       // border-bottom: 1px solid #333;
       a {
         color: #fff;
         position: relative;
         &:hover {
-          color: #1daa97;
+          color: --color-teal;
         }
         p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: red;
+          width: 20px;
+          height: 20px;
+          font-size: small;
+          padding: 3px;
+          border-radius: 100%;
           position: absolute;
-          top: -1rem;
-
-          left: 4rem;
-
+          top: -1.6rem;
+          left: 1rem;
           font-weight: 500;
           color: #fff;
         }
       }
     }
-
     .show-nav {
       transform: translateX(0);
     }
     .hide-nav {
-      transform: translateX(200%);
+      transform: translateX(-200%);
     }
     .menu-icon {
       display: flex;
+      align-items: center;
       > * {
         margin-left: 2rem;
+        // background-color: red;
+        //   width: 20px;
+        //   height: 20px;
+        //   padding-left: 7px;
+        //   border-radius: 100%;
+        //   position: absolute;
+        //   top: -1rem;
+        //   left: 1.5rem;
+        //   font-weight: 500;
+        //   color: #fff;
       }
-    }
-    .active::after {
-      width: 50%;
     }
   }
 }
@@ -235,7 +238,6 @@ header {
 .active {
   position: relative;
   color: var(--color-danger);
-  width: 50%;
 }
 
 .active::after {

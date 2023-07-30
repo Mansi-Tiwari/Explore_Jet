@@ -1,16 +1,17 @@
 .table {
   padding: 5px;
   width: 100%;
-  overflow-x: auto;
-
+  overflow: auto;
   table {
     border-collapse: collapse;
     width: 100%;
     font-size: 1.4rem;
+  overflow-x: auto;
+
 
     thead {
-      border-top: 2px solid var(--light-blue);
-      border-bottom: 2px solid var(--light-blue);
+      border-top: 1px solid ;
+      border-bottom: 1px solid ;
     }
 
     th {
@@ -30,9 +31,7 @@
       }
     }
 
-    tr {
-      border-bottom: 1px solid #ccc;
-    }
+
 
     tr:nth-child(even) {
       background-color: #eee;
@@ -42,7 +41,7 @@
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
-   
+
 
     .card {
       padding: 1rem;
@@ -64,9 +63,17 @@
   display: flex;
   align-items: center;
   button {
-    border: 1px solid var(--darkblue);
+    border: 1px solid var(--dark-blue);
   }
   & > * {
     margin-right: 1rem;
   }
+}
+.table::-webkit-scrollbar {
+  display: none;
+}
+
+.table {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

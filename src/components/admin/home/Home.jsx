@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import InfoBox from "../../infoBox/InfoBox";
 import styles from "./Home.module.scss";
-import { AiFillDollarCircle } from "react-icons/ai";
-import { BsCart4 } from "react-icons/bs";
+import { TbMoneybag } from "react-icons/tb";
+import {BsBoxSeamFill } from "react-icons/bs";
 import { FaCartArrowDown } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -19,8 +19,8 @@ import useFetchCollection from "../../../customHooks/useFetchCollection";
 import Chart from "../../chart/Chart";
 
 //Icons
-const earningIcon = <AiFillDollarCircle size={30} color="#b624ff" />;
-const productIcon = <BsCart4 size={30} color="#1f93ff" />;
+const earningIcon = <TbMoneybag size={30} color="#b624ff" />;
+const productIcon = <BsBoxSeamFill size={30} color="#1daa97" />;
 const ordersIcon = <FaCartArrowDown size={30} color="#1daa97" />;
 
 const Home = () => {
@@ -46,14 +46,8 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <h2>Admin Home</h2>
+      <h2 className=" text-2xl md:text-4xl font-bold text-white">Admin Home</h2>
       <div className={styles["info-box"]}>
-        <InfoBox
-          cardClass={`${styles.card} ${styles.card1}`}
-          title={"Earnings"}
-          count={`$${totalOrderAmount}`}
-          icon={earningIcon}
-        />
         <InfoBox
           cardClass={`${styles.card} ${styles.card2}`}
           title={"Products"}
@@ -65,6 +59,12 @@ const Home = () => {
           title={"Orders"}
           count={orders.length}
           icon={ordersIcon}
+        />
+        <InfoBox
+          cardClass={`${styles.card} ${styles.card1}`}
+          title={"Earnings"}
+          count={`$${totalOrderAmount}`}
+          icon={earningIcon}
         />
       </div>
       <div>

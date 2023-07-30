@@ -11,14 +11,12 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    console.log(form.current);
-
     emailjs
       .sendForm(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        "template_7xyhwen",
+        import.meta.env.VITE_APP_EMAILJS_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMP_ID,
         form.current,
-        "user_hKs2aRfLoozcqA28UpUyz"
+        import.meta.env.VITE_APP_EMAILJS_PK,
       )
       .then(
         (result) => {
@@ -30,7 +28,7 @@ const Contact = () => {
       );
     e.target.reset();
   };
-
+console.log( import.meta.env.VITE_APP_EMAILJS_ID,    import.meta.env.VITE_APP_EMAILJS_TEMP_ID,)
   return (
     <section>
       <div className={`container ${styles.contact}`}>
@@ -61,7 +59,7 @@ const Contact = () => {
               />
               <label>Message</label>
               <textarea name="message" cols="30" rows="10"></textarea>
-              <button className="--btn border border-slate-400 shadow-2xl hover:bg-slate-400 hover:text-white">Send Message</button>
+              <button className="--btn border rounded-md border-slate-400 shadow-2xl hover:bg-[#0a1930] hover:text-white">Send Message</button>
             </Card>
           </form>
 

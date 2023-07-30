@@ -6,8 +6,8 @@ const InfoBox = ({ cardClass, title, count, icon }) => {
   return (
     <div className={styles["info-box"]}>
       <Card cardClass={cardClass}>
-        <h4>{title}</h4>
-        <span>
+        <h4 className="text-2xl">{title}</h4>
+        <span className="text-2xl">
           <h3>{count}</h3>
           {icon}
         </span>

@@ -17,8 +17,8 @@ const OrderDetails = () => {
   return (
     <>
       <div className={styles.table}>
-        <h2>Order Details</h2>
-        <div>
+        <h2 className="text-white text-2xl md:text-4xl font-bold mb-20">Order Details</h2>
+        <div className="border w-80 p-1">
           <Link to="/admin/orders">&larr; Back To Orders</Link>
         </div>
         <br />
@@ -27,16 +27,16 @@ const OrderDetails = () => {
         ) : (
           <>
             <p>
-              <b>Order ID</b> {order.id}
+              <strong>Order ID:</strong> {order.id}
             </p>
             <p>
-              <b>Order Amount</b> ${order.orderAmount}
+              <strong>Order Amount:</strong> ₹{order.orderAmount}
             </p>
             <p>
-              <b>Order Status</b> {order.orderStatus}
+              <strong>Order Status:</strong> {order.orderStatus}
             </p>
             <p>
-              <b>Shipping Address</b>
+              <strong>Shipping Address:</strong>
               <br />
               Address: {order.shippingAddress.line1},
               {order.shippingAddress.line2}, {order.shippingAddress.city}
@@ -49,7 +49,7 @@ const OrderDetails = () => {
             <table>
               <thead>
                 <tr>
-                  <th>s/n</th>
+                  <th>S/N</th>
                   <th>Product</th>
                   <th>Price</th>
                   <th>Quantity</th>

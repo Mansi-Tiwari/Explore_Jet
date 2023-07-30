@@ -16,8 +16,7 @@ import {
 import { toast } from "react-toastify";
 import CheckoutForm from "../../components/checkoutForm/CheckoutForm";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
-
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 const Checkout = () => {
   const [message, setMessage] = useState("Initializing checkout...");
   const [clientSecret, setClientSecret] = useState("");
@@ -35,12 +34,12 @@ const Checkout = () => {
     dispatch(CALCULATE_TOTAL_QUANTITY());
   }, [dispatch, cartItems]);
 
-  const description = `eShop payment: email: ${customerEmail}, Amount: ${totalAmount}`;
+  const description = `SmartBuy payment: email: ${customerEmail}, Amount: ${totalAmount}`;
 
   useEffect(() => {
     // http://localhost:4242/create-payment-intent
     // Create PaymentIntent as soon as the page loads
-    fetch("https://eshop-react-firebase.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:3000/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -77,7 +76,7 @@ const Checkout = () => {
   return (
     <>
       <section>
-        <div className="container">{!clientSecret && <h3>{message}</h3>}</div>
+        <div className="container text-4xl">{!clientSecret && <h3>{message}</h3>}</div>
       </section>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>

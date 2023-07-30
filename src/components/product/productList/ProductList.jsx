@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ProductList.module.scss";
-import {BsGrid3X3Gap } from "react-icons/bs";
+import { BsGrid3X3Gap } from "react-icons/bs";
 import { TfiLayoutListThumbAlt } from "react-icons/tfi";
 import Search from "../../search/Search";
 import ProductItem from "../productItem/ProductItem";
@@ -11,6 +11,7 @@ import {
   SORT_PRODUCTS,
 } from "../../../redux/slice/filterSlice";
 import Pagination from "../../pagination/Pagination";
+import { NavLink } from "react-router-dom";
 
 const ProductList = ({ products }) => {
   const [grid, setGrid] = useState(true);
@@ -28,7 +29,6 @@ const ProductList = ({ products }) => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,16 +40,21 @@ const ProductList = ({ products }) => {
   }, [dispatch, products, search]);
 
   return (
-    <div className={`mb-7 ${styles["product-list"]} `}id="product">
+    <div className={`mb-7 ${styles["product-list"]} `} id="product">
       <div className={styles.top}>
         <div className={`mx-3 gap-6 ${styles.icons}`}>
           <BsGrid3X3Gap
             size={22}
             color="#0a1930"
             onClick={() => setGrid(true)}
-          className="mx-4 "/>
+            className="mx-4 "
+          />
 
-          <TfiLayoutListThumbAlt size={24} color="#0a1930" onClick={() => setGrid(false)} />
+          <TfiLayoutListThumbAlt
+            size={24}
+            color="#0a1930"
+            onClick={() => setGrid(false)}
+          />
 
           <p>
             <b>{filteredProducts.length}</b> Products found.
@@ -73,9 +78,7 @@ const ProductList = ({ products }) => {
       </div>
 
       <div className={grid ? `${styles.grid}` : `${styles.list}`}>
-        {products.lenght === 0 ? (
-          <p>No product found.</p>
-        ) : (
+        {currentProducts.length !== 0 ? (
           <>
             {currentProducts.map((product) => {
               return (
@@ -85,14 +88,30 @@ const ProductList = ({ products }) => {
               );
             })}
           </>
+        ) : (
+          <div>
+            <div className="h-[500px] mt-80 text-4xl">
+             Hmm, Looks like we don't have match for "{search}".
+            <p className="mt-3">
+              If you still can't find what you're looking for,
+              <span className="text-teal-500 font-bold">
+              <NavLink to={'/contact'}>
+
+              send feedback
+              </NavLink>
+              </span>
+              to help Improve our site.
+            </p>
+            </div>
+          </div>
         )}
-        <Pagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          productsPerPage={productsPerPage}
-          totalProducts={filteredProducts.length}
-        />
       </div>
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        productsPerPage={productsPerPage}
+        totalProducts={filteredProducts.length}
+      />
     </div>
   );
 };

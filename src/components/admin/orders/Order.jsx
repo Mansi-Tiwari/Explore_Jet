@@ -28,21 +28,23 @@ const Orders = () => {
   return (
     <>
       <div className={styles.order}>
-        <h2>Your Order History</h2>
-        <p>
-          Open an order to <b>Change order status</b>
+        <h2 className=" text-white text-2xl md:text-4xl font-bold mb-20 ">
+          Your Order History
+        </h2>
+        <p className="text-white">
+          Open an order to <span className="font-semibold">Change order status</span>
         </p>
         <br />
         <>
           {isLoading && <Loader />}
           <div className={styles.table}>
             {orders.length === 0 ? (
-              <p>No order found</p>
+              <p className="text-white">No order found</p>
             ) : (
               <table>
                 <thead>
                   <tr>
-                    <th>s/n</th>
+                    <th>S/N</th>
                     <th>Date</th>
                     <th>Order ID</th>
                     <th>Order Amount</th>
@@ -66,7 +68,7 @@ const Orders = () => {
                         </td>
                         <td>{id}</td>
                         <td>
-                          {"$"}
+                          {"₹"}
                           {orderAmount}
                         </td>
                         <td>

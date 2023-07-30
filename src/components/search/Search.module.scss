@@ -8,6 +8,7 @@
     top: 50%;
     left: 1rem;
     transform: translateY(-50%);
+    color: #6d6b6b;
   }
 
   input[type="text"] {
@@ -18,8 +19,8 @@
     padding-left: 3rem;
     margin: 1rem auto;
     width: 100%;
-    border: 1px solid #777;
-    border-radius: 3px;
+    border: 2px solid #d6d4d4;
+    border-radius: 10px;
     outline: none;
   }
 }

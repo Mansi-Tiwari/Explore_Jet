@@ -51,19 +51,19 @@ const ProductFilter = () => {
     setPrice(maxPrice);
   };
 
-  return (
+  return (<>
     <div className={`px-8 py-5 border  ${styles.filter}`}>
       <h4 className="text-2xl font-bold mb-8">Categories</h4>
       <div className={`${styles.category} mb-10`}>
         {allCategories.map((cat, index) => {
           return (
             <button
-              key={index}
-              type="button"
-              className={`${category}` === cat ? `${styles.active}` : null}
+            key={index}
+            type="button"
+            className={`${category}` === cat ? `${styles.active}` : null}
               onClick={() => filterProducts(cat)}
-            >
-              &#8250; {cat}
+              >
+              &#10095; {cat}
             </button>
           );
         })}
@@ -73,14 +73,14 @@ const ProductFilter = () => {
         <select value={brand} onChange={(e) => setBrand(e.target.value)} className="mb-10">
           {allBrands.map((brand, index) => {
             return (
-              <option key={index} value={brand}>
+              <option key={index} value={brand}  >
                 {brand}
               </option>
             );
           })}
         </select>
         <h4 className="text-2xl font-bold mb-3">Price</h4>
-        <p  className="font-bold">{`$${price}`}</p>
+        <p  className="font-bold">{`₹${price}`}</p>
         <div className={`mb-[70px] ${styles.price}`}>
           <input
             type="range"
@@ -98,6 +98,7 @@ const ProductFilter = () => {
         </button>
       </div>
     </div>
+            </>
   );
 };
 

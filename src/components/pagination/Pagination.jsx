@@ -78,7 +78,7 @@ const Pagination = ({
         Next
       </li>
 
-      <p>
+      <p className="text-white">
         <b className={styles.page}>{`page ${currentPage}`}</b>
         <span>{` of `}</span>
         <b>{`${Math.ceil(totalPages)}`}</b>

@@ -5,17 +5,22 @@
   }
   .review {
     border-top: 1px solid #ccc;
+  ul {
+      font-size: 28px;
+    }
   }
   .details {
     padding-top: 2rem;
     display: flex;
-
+    gap: 30px;
     .img {
-      width: 45%;
-      border: 1px solid #ccc;
+      width: 500px;
+      height: 600px;
       border-radius: 3px;
       img {
+        border: 1px solid #ccc;
         width: 100%;
+        padding: 30px;
       }
     }
 
@@ -27,12 +32,14 @@
       }
       .price {
         color: #1daa97;
-        font-weight: 500;
+        font-weight: 600;
+        font-size: x-large;
       }
 
       .count {
         display: flex;
         align-items: center;
+
         & > * {
           margin-right: 1rem;
         }
@@ -48,8 +55,11 @@
 
       .img {
         width: 100%;
+        height: auto;
       }
-
+      .price {
+        font-size: medium;
+      }
       .content {
         width: 100%;
       }

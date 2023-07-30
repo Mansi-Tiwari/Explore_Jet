@@ -14,12 +14,12 @@
     font-size: 1.4rem;
 
     thead {
-      border-top: 2px solid var(--light-blue);
-      border-bottom: 2px solid var(--light-blue);
+      border-top: 1px solid rgb(61, 60, 60);
+      border-bottom: 1px solid rgb(61, 60, 60);
     }
 
     th {
-      border: 1px solid #eee;
+      border: 1px solid rgb(61, 60, 60);
     }
 
     th,
@@ -29,18 +29,17 @@
       padding: 8px;
       &.icons {
         > * {
-          margin-right: 5px;
           cursor: pointer;
         }
       }
     }
 
     tr {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid rgb(61, 60, 60);
     }
 
     tr:nth-child(even) {
-      background-color: #eee;
+      background-color: rgb(61, 60, 60)
     }
   }
 }

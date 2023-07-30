@@ -1,7 +1,7 @@
 .filter {
   background: white;
   border: none;
-  
+
   h4 {
     margin-top: 1rem;
   }
@@ -30,13 +30,13 @@
       outline: none;
     }
   }
- 
- 
+
+
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .filter {
-    border: none;
+
     .category button {
       width: 100%;
     }
@@ -50,6 +50,7 @@
 
 .active {
   position: relative;
+  font-weight: 700;
   // margin-bottom: 2px;
   padding-left: 1rem;
 }
@@ -59,7 +60,7 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 2px;
+  width: 4px;
   height: 100%;
-  background-color: var(--color-danger);
+  background-color: var(--dark-blue);
 }

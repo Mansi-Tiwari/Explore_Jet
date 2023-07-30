@@ -46,7 +46,7 @@ const ChangeOrderStatus = ({ order, id }) => {
 
       <div className={styles.status}>
         <Card cardClass={styles.card}>
-          <h4>Update Status</h4>
+          <h4 className="text-white text-2xl md:text-4xl font-bold mb-20">Update Status</h4>
           <form onSubmit={(e) => editOrder(e, id)}>
             <span>
               <select
@@ -63,7 +63,7 @@ const ChangeOrderStatus = ({ order, id }) => {
               </select>
             </span>
             <span>
-              <button type="submit" className="--btn --btn-primary">
+              <button type="submit" className="--btn bg-black text-white">
                 Update Status
               </button>
             </span>

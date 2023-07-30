@@ -1,7 +1,7 @@
 import styles from "./ProductDetails.module.scss";
 
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 import spinnerImg from "../../../assets/spinner.jpg";
 
@@ -48,8 +48,8 @@ const ProductDetails = () => {
   return (
     <section>
       <div className={`container ${styles.product}`}>
-        <h2>Product Details</h2>
-        <div>
+        <h2 className="text-4xl font-bold mb-4">Product Details</h2>
+        <div className="border p-2 shadow-md w-80">
           <Link to="/#products">&larr; Back To Products</Link>
         </div>
         {product === null ? (
@@ -61,21 +61,21 @@ const ProductDetails = () => {
                 <img src={product.imageURL} alt={product.name} />
               </div>
               <div className={styles.content}>
-                <h3>{product.name}</h3>
+                <h3 className="text-2xl md:text-4xl">{product.name}</h3>
                 <p className={styles.price}>{`$${product.price}`}</p>
-                <p>{product.desc}</p>
+                <p className="mt-4">{product.desc}</p>
                 <p>
-                  <b>SKU</b> {product.id}
+                  <span className="font-semibold">SKU:</span> {product.id}
                 </p>
                 <p>
-                  <b>Brand</b> {product.brand}
+                  <span className="font-semibold">Brand:</span> {product.brand}
                 </p>
 
                 <div className={styles.count}>
                   {isCartAdded < 0 ? null : (
                     <>
                       <button
-                        className="--btn"
+                        className="--btn px-4 py-2 border bg-gray-300"
                         onClick={() => decreaseCart(product)}
                       >
                         -
@@ -84,7 +84,7 @@ const ProductDetails = () => {
                         <b>{cart.cartQuantity}</b>
                       </p>
                       <button
-                        className="--btn"
+                        className="--btn px-4 py-2 border bg-gray-300"
                         onClick={() => addToCart(product)}
                       >
                         +
@@ -93,17 +93,22 @@ const ProductDetails = () => {
                   )}
                 </div>
                 <button
-                  className="--btn --btn-danger"
+                  className="--btn bg-black text-white"
                   onClick={() => addToCart(product)}
                 >
                   ADD TO CART
                 </button>
+                <NavLink to={`/review-product/${id}`}>
+                  <button className="--btn bg-black text-white">
+                    Add Review
+                  </button>
+                </NavLink>
               </div>
             </div>
           </>
         )}
         <Card cardClass={styles.card}>
-          <h3>Product Reviews</h3>
+          <h3 className="text-2xl font-semibold">Product Reviews</h3>
           <div>
             {filteredReviews.length === 0 ? (
               <p>There are no reviews for this product yet.</p>
@@ -113,15 +118,19 @@ const ProductDetails = () => {
                   const { rate, review, reviewDate, userName } = item;
                   return (
                     <div key={index} className={styles.review}>
-                      <StarsRating value={rate} />
+                      <p>User: {userName}</p>
+
+                      <StarsRating
+                        className="text-lg"
+                        value={rate}
+                        disabled={true}
+                      />
+
                       <p>{review}</p>
                       <span>
                         <b>{reviewDate}</b>
                       </span>
                       <br />
-                      <span>
-                        <b>by: {userName}</b>
-                      </span>
                     </div>
                   );
                 })}

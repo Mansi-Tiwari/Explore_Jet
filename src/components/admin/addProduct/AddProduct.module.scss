@@ -1,7 +1,9 @@
 .product {
+
+
   .card {
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     padding: 1rem;
   }
   form {
@@ -26,6 +28,7 @@
       border: 1px solid #777;
       border-radius: 3px;
       outline: none;
+      color: black;
     }
 
     // textarea {
@@ -33,11 +36,11 @@
     // }
 
     .progress {
-      background-color: #aaa;
+      background-color: gray;
       border: 1px solid transparent;
       border-radius: 10px;
       .progress-bar {
-        background-color: var(--light-blue);
+        background-color: rgb(32, 31, 31);
         border: 1px solid transparent;
         border-radius: 10px;
         color: #fff;
@@ -50,6 +53,8 @@
 }
 
 .group {
-  border: 1px solid var(--dark-blue);
+  color: white;
+background-color: transparent;
+
   padding: 5px;
 }

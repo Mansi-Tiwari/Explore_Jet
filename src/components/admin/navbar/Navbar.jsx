@@ -14,11 +14,11 @@ const Navbar = () => {
     <div className={styles.navbar}>
       <div className={styles.user}>
         <FaUserCircle size={40} color="#fff" />
-        <h4>{userName}</h4>
+        <h4 className="text-3xl mt-3">{userName}</h4>
       </div>
       <nav>
         <ul>
-        
+
           <li>
             <NavLink to="/admin/home" className={activeLink}>
               Home

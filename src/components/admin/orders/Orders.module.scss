@@ -9,12 +9,12 @@
     font-size: 1.4rem;
 
     thead {
-      border-top: 2px solid var(--light-blue);
-      border-bottom: 2px solid var(--light-blue);
+      border-top: 1px solid rgb(17, 17, 17) ;
+      border-bottom: 1px solid rgb(17, 17, 17);
     }
 
     th {
-      border: 1px solid #eee;
+      border: 1px solid #3a3939;
     }
 
     th,
@@ -31,15 +31,16 @@
     }
 
     tr {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #3d3c3c;
       cursor: pointer;
     }
 
     tr:nth-child(even) {
       background-color: #eee;
+      color: rgb(51, 50, 50);
     }
     .pending {
-      color: #1daa97;
+      color: #0445d3;
       font-weight: 500;
     }
     .delivered {
