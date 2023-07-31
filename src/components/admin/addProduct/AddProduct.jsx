@@ -81,7 +81,6 @@ const AddProduct = () => {
 
   const addProduct = (e) => {
     e.preventDefault();
-    // console.log(product);
     setIsLoading(true);
 
     try {

@@ -38,7 +38,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPage, setScrollPage] = useState(false);
   const [displayName, setDisplayName] = useState("");
-  const cartTotalQuantity = useSelector(selectCartTotalQuantity);
+  const cartTotalQuantity= useSelector(selectCartTotalQuantity);
   const user = auth.currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
