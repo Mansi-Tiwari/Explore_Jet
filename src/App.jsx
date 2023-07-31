@@ -15,7 +15,6 @@ import {
   OrderDetails,
   CheckoutSuccess,
 } from "./pages/index";
-
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../src/App.css";
@@ -52,10 +51,8 @@ function App() {
           <Route path="/checkout-success" element={<CheckoutSuccess />} />
           <Route path="/review-product/:id" element={<ReviewProducts />} />
           <Route path="/order-details/:id" element={<OrderDetails />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
-
         <Footer />
       </BrowserRouter>
     </>

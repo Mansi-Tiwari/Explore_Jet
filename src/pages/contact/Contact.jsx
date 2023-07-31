@@ -28,7 +28,6 @@ const Contact = () => {
       );
     e.target.reset();
   };
-console.log( import.meta.env.VITE_APP_EMAILJS_ID,    import.meta.env.VITE_APP_EMAILJS_TEMP_ID,)
   return (
     <section>
       <div className={`container ${styles.contact}`}>
