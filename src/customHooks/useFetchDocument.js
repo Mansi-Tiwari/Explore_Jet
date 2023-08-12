@@ -14,11 +14,12 @@ const useFetchDocument = (collectionName, documentID) => {
       // console.log("Document data:", docSnap.data());
       const obj = {
         id: documentID,
+
         ...docSnap.data(),
       };
       setDocument(obj);
     } else {
-      toast.error("Document not found");
+      toast.error("Product not found");
     }
   };
 

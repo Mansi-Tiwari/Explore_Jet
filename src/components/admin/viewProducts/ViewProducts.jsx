@@ -126,7 +126,7 @@ const ViewProducts = () => {
                     </td>
                     <td>{name}</td>
                     <td>{category}</td>
-                    <td>{`$${price}`}</td>
+                    <td>{`₹${price.toLocaleString()}`}</td>
                     <td className={` flex  items-center gap-2 justify-start ${styles.icons}`}>
                       <Link to={`/admin/add-product/${id}`}>
                         <FaEdit size={18} />

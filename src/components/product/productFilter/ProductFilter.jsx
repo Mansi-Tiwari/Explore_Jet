@@ -80,11 +80,11 @@ const ProductFilter = () => {
           })}
         </select>
         <h4 className="text-2xl font-bold mb-3">Price</h4>
-        <p  className="font-bold">{`₹${price}`}</p>
+        <p  className="font-bold">{`₹${price.toLocaleString()}`}</p>
         <div className={`mb-[70px] ${styles.price}`}>
           <input
             type="range"
-            value={price}
+            value={price.toLocaleString()}
             onChange={(e) => setPrice(e.target.value)}
             min={minPrice}
             id="myinput"

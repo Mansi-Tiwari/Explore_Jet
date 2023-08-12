@@ -20,7 +20,7 @@ import { selectShippingAddress } from "../../redux/slice/checkoutSlice";
 import { addDoc, collection, Timestamp } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
-
+import pay from "../../assets/pay.png"
 const CheckoutForm = () => {
   const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -118,10 +118,11 @@ const CheckoutForm = () => {
     <section>
       <div className={`container ${styles.checkout}`}>
         <h2 className="text-3xl mb-10 font-bold">Checkout</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="">
           <div>
             <Card cardClass={styles.card}>
               <CheckoutSummary />
+<img src={pay} alt=""  className="w-[300px] h-[300px]"/>
             </Card>
           </div>
           <div>

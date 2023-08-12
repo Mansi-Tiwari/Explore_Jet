@@ -1,10 +1,7 @@
 import styles from "./ProductDetails.module.scss";
-
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useParams } from "react-router-dom";
-
 import spinnerImg from "../../../assets/spinner.jpg";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   ADD_TO_CART,
@@ -25,7 +22,6 @@ const ProductDetails = () => {
   const { document } = useFetchDocument("products", id);
   const { data } = useFetchCollection("reviews");
   const filteredReviews = data.filter((review) => review.productID === id);
-
   const cart = cartItems.find((cart) => cart.id === id);
   const isCartAdded = cartItems.findIndex((cart) => {
     return cart.id === id;
@@ -50,7 +46,7 @@ const ProductDetails = () => {
       <div className={`container ${styles.product}`}>
         <h2 className="text-4xl font-bold mb-4">Product Details</h2>
         <div className="border p-2 shadow-md w-80">
-          <Link to="/#products">&larr; Back To Products</Link>
+          <Link to="/products">&larr; Back To Products</Link>
         </div>
         {product === null ? (
           <img src={spinnerImg} alt="Loading" style={{ width: "50px" }} />
@@ -61,14 +57,18 @@ const ProductDetails = () => {
                 <img src={product.imageURL} alt={product.name} />
               </div>
               <div className={styles.content}>
+                <p>
+                  <span className="font-semibold text-teal-500">Brand:</span>{" "}
+                  {product.brand}
+                </p>
                 <h3 className="text-2xl md:text-4xl">{product.name}</h3>
-                <p className={styles.price}>{`$${product.price}`}</p>
+                <p className={styles.price}>
+                  <span >Price: </span>
+                  {`₹${product.price.toLocaleString()}`}
+                </p>
                 <p className="mt-4">{product.desc}</p>
                 <p>
                   <span className="font-semibold">SKU:</span> {product.id}
-                </p>
-                <p>
-                  <span className="font-semibold">Brand:</span> {product.brand}
                 </p>
 
                 <div className={styles.count}>

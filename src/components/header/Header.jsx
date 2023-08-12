@@ -9,7 +9,7 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../firebase/config";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   SET_ACTIVE_USER,
   REMOVE_ACTIVE_USER,
@@ -20,6 +20,7 @@ import {
   CALCULATE_TOTAL_QUANTITY,
   selectCartTotalQuantity,
 } from "../../redux/slice/cartSlice";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const logo = (
   <div className={` flex flex-row pl-6 ${styles.logo}`}>
@@ -38,7 +39,7 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [scrollPage, setScrollPage] = useState(false);
   const [displayName, setDisplayName] = useState("");
-  const cartTotalQuantity= useSelector(selectCartTotalQuantity);
+  const cartTotalQuantity = useSelector(selectCartTotalQuantity);
   const user = auth.currentUser;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -99,14 +100,23 @@ const Header = () => {
   };
 
   const cart = (
-    <span className={showMenu? 'border-b border-gray-800 flex':`${styles.cart}`}>
+    <span
+      className={showMenu ? "border-b border-gray-800 flex" : `${styles.cart}`}
+    >
       <NavLink to="/cart">
-        <p className={showMenu?"relative flex items-center justify-center bg-red-600 text-md  rounded-full h-9 w-9 p-1 ml-5":""}>{cartTotalQuantity}</p>
-        <  RiShoppingBagLine size={20} />
+        <p
+          className={
+            showMenu
+              ? "relative flex items-center justify-center bg-red-600 text-md  rounded-full h-9 w-9 p-1 ml-5"
+              : ""
+          }
+        >
+          {cartTotalQuantity}
+        </p>
+        <RiShoppingBagLine size={20} />
       </NavLink>
     </span>
   );
-
 
   return (
     <header className={scrollPage ? `${styles.fixed}` : null}>
@@ -140,7 +150,7 @@ const Header = () => {
             <AdminOnlyLink>
               <li className=" font-bold bg-teal-400 px-2 py-1 rounded-xl hover:bg-transparent hover:border">
                 <Link to="/admin/home">
-                  <button >Admin</button>
+                  <button>Admin</button>
                 </Link>
               </li>
             </AdminOnlyLink>
@@ -150,50 +160,60 @@ const Header = () => {
               </NavLink>
             </li>
             <li>
+              <NavLink to="/products" className={activeTab}>
+                Products
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/contact" className={activeTab}>
                 Contact Us
               </NavLink>
             </li>
           </ul>
-          <div className={`flex flex-col pl-2 md:items-center md:flex-row md:gap-4 ${styles["header-right"]}`} onClick={hideMenu}>
+          <div
+            className={`flex flex-col pl-2 md:items-center md:flex-row md:gap-4 ${styles["header-right"]}`}
+            onClick={hideMenu}
+          >
+            <ShowOnLogout>
+              <NavLink className={activeTab} to={"/login"}>
+                Login
+              </NavLink>
+            </ShowOnLogout>
+            <ShowOnLogin>
+              <a href="#home" className="flex gap-3 items-center text-teal-200">
+                <FaUserCircle size={16} />
+                Hi, {displayName}
+              </a>
+            </ShowOnLogin>
+            <ShowOnLogout>
+              <NavLink className={activeTab} to={"/register"}>
+                Register
+              </NavLink>
+            </ShowOnLogout>
+            <ShowOnLogin>
+              <NavLink className={activeTab} to={"/order-history"}>
+                My order
+              </NavLink>
+            </ShowOnLogin>
+            <ShowOnLogin>
+              <NavLink onClick={logOut} to={"/"}>
+                Logout
+              </NavLink>
+            </ShowOnLogin>
+            <NavLink onClick={logOut} to={"/"}>
 
-              <ShowOnLogout>
-                <NavLink className={activeTab} to={"/login"}>
-                  Login
-                </NavLink>
-              </ShowOnLogout>
-              <ShowOnLogin >
-                <a href="#home" className="flex gap-3 items-center text-teal-200" >
-                  <FaUserCircle size={16} />
-                  Hi, {displayName}
-                </a>
-              </ShowOnLogin>
-              <ShowOnLogout>
-                <NavLink className={activeTab} to={"/register"}>
-                  Register
-                </NavLink>
-              </ShowOnLogout>
-              <ShowOnLogin>
-                <NavLink className={activeTab} to={"/order-history"}>
-                  My order
-                </NavLink>
-              </ShowOnLogin>
-              <ShowOnLogin>
-                <NavLink onClick={logOut} to={"/"}>
-                  Logout
-                </NavLink>
-              </ShowOnLogin>
-
-            {cart}
+            <AiOutlineHeart size={20} />
+            </NavLink>
+          
+           {cart}
           </div>
         </nav>
         {/* {Mobile nav section} */}
-        <div className= {styles["menu-icon"]}>
-            {cart}
+        <div className={styles["menu-icon"]}>
+          {cart}
 
           <BiMenuAltRight size={35} onClick={toggleMenu} />
-          </div>
-
+        </div>
       </div>
     </header>
   );

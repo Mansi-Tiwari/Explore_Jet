@@ -15,7 +15,7 @@ const CheckoutSummary = () => {
   const cartTotalQuantity = useSelector(selectCartTotalQuantity);
 
   return (
-    <div>
+    <div className="p-7">
       <h3 className="text-2xl font-semibold md:text-3xl">Checkout Summary</h3>
       <div>
         {cartItems.lenght === 0 ? (
@@ -40,7 +40,7 @@ const CheckoutSummary = () => {
                 <Card key={id} cardClass={styles.card}>
                   <h4 className="text-2xl font-bold">Product: {name}</h4>
                   <p>Quantity: {cartQuantity}</p>
-                  <p>Unit price: {price}</p>
+                  <p>Unit price: {price.toLocaleString()}</p>
                   <p>Set price: {price * cartQuantity}</p>
                 </Card>
               );

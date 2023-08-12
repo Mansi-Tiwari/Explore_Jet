@@ -164,8 +164,8 @@ header {
 
       .header-right {
         a {
-          padding: 20px 0px 20px 0px;
           border-bottom: 1px solid #333;
+          padding: 20px 0px 20px 0px;
         }
 
         .links {
@@ -237,7 +237,7 @@ header {
 
 .active {
   position: relative;
-  color: var(--color-danger);
+  color: #ffff;
 }
 
 .active::after {
@@ -245,7 +245,7 @@ header {
   position: absolute;
   left: 0;
   bottom: -3px;
-  width: 100%;
+  width: 5vh;
   height: 2px;
   background-color: #fff;
 }

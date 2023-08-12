@@ -18,8 +18,16 @@ import { selectProducts } from "../../../redux/slice/productSlice";
 const categories = [
   { id: 1, name: "Laptop" },
   { id: 2, name: "Electronics" },
-  { id: 3, name: "Fashion" },
-  { id: 4, name: "Phone" },
+  { id: 3, name: "Men Fashion" },
+  { id: 3, name: "Women Fashion" },
+
+  { id: 5, name: "Android" },
+  { id: 6, name: "Shoes" },
+  { id: 7, name: "Earpods" },
+  { id: 8, name: "Headphone" },
+
+
+
 ];
 
 const initialState = {

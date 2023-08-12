@@ -74,7 +74,7 @@ const OrderDetails = () => {
                           style={{ width: "100px" }}
                         />
                       </td>
-                      <td>{price}</td>
+                      <td>{price.toLocaleString()}</td>
                       <td>{cartQuantity}</td>
                       <td>{(price * cartQuantity).toFixed(2)}</td>
                     </tr>

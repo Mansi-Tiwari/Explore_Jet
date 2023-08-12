@@ -10,6 +10,7 @@ import styles from "./ProductItem.module.scss";
 
 const ProductItem = ({ product, grid, id, name, price, desc, imageURL }) => {
   const dispatch = useDispatch();
+
   const shortenText = (text, n) => {
     if (text.length > n) {
       const shortenedText = text.substring(0, n).concat("...");
@@ -32,10 +33,10 @@ const ProductItem = ({ product, grid, id, name, price, desc, imageURL }) => {
       </Link>
       <div className={styles.content}>
         <div className={styles.details}>
-          <p>{`₹${price}`}</p>
+          <p>{`₹${price.toLocaleString()}`}</p>
           <h4>{shortenText(name, 18)}</h4>
         </div>
-        {!grid && <p className={styles.desc}>{shortenText(desc, 200)}</p>}
+        {!grid && <p className={styles.desc}>{shortenText(desc, 100)}</p>}
 
         <button
           className="--btn bg-black rounded-full text-white"

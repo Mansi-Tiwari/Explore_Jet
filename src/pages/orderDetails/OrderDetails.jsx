@@ -66,7 +66,7 @@ const OrderDetails = () => {
                           <strong>{name}</strong>
                         </p>
                       </td>
-                      <td>₹{price}</td>
+                      <td>₹{price.toLocaleString()}</td>
                       <td>{cartQuantity}</td>
                       <td>₹{(price * cartQuantity).toFixed(2)}</td>
                       <td className={styles.icons}>

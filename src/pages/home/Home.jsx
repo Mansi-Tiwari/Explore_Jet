@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
-import Product from "../../components/product/product";
 import Slider from "../../components/slider/Slider";
+import ProductsList from "../../components/products/ProductsList";
+import { useSelector } from "react-redux";
+import { selectProducts } from "../../redux/slice/productSlice";
 
 const Home = () => {
   const url = window.location.href;
+  const products = useSelector(selectProducts);
 
   useEffect(() => {
     const scrollToProducts = () => {
@@ -20,13 +23,11 @@ const Home = () => {
 
   return (
     <div>
-      <div >
-
-      <Slider />
+      <div>
+        <Slider />
       </div>
       <div className="my-10">
-
-      <Product />
+        <ProductsList />
       </div>
     </div>
   );

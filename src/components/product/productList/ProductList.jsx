@@ -91,17 +91,14 @@ const ProductList = ({ products }) => {
         ) : (
           <div>
             <div className="h-[500px] mt-80 text-4xl">
-             Hmm, Looks like we don't have match for "{search}".
-            <p className="mt-3">
-              If you still can't find what you're looking for,
-              <span className="text-teal-500 font-bold">
-              <NavLink to={'/contact'}>
-
-              send feedback
-              </NavLink>
-              </span>
-              to help Improve our site.
-            </p>
+              Hmm, Looks like we don't have match for "{search}".
+              <p className="mt-3">
+                If you still can't find what you're looking for,
+                <span className="text-teal-500 font-bold">
+                  <NavLink to={"/contact"}>send feedback</NavLink>
+                </span>
+                to help Improve our site.
+              </p>
             </div>
           </div>
         )}

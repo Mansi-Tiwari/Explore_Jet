@@ -118,7 +118,7 @@ const Cart = () => {
                           <b>{name}</b>
                         </p>
                       </td>
-                      <td>{price}</td>
+                      <td>{price.toLocaleString()}</td>
                       <td>
                         <div
                           className={` border p-2 gap-2  w-auto flex items-center justify-center flex-col${styles.count}`}
