@@ -200,11 +200,9 @@ const Header = () => {
                 Logout
               </NavLink>
             </ShowOnLogin>
-            <NavLink onClick={logOut} to={"/"}>
-
+            <NavLink to={"/"}>
             <AiOutlineHeart size={20} />
             </NavLink>
-          
            {cart}
           </div>
         </nav>
